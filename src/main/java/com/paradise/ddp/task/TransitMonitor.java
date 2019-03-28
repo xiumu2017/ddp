@@ -38,11 +38,10 @@ public class TransitMonitor {
 
                 // or 直接推送
                 log.error("Data-Sync-Server for Chi-Zhou City is overtime!");
-                client.send(token, new TextMessage("please check Data-Sync-Server for Chi-Zhou City"));
+                client.send(token, new TextMessage("Data-Sync-Server for Chi-Zhou City is overtime! Please check Data-Sync-Server for Chi-Zhou City"));
             } else {
                 // 记录巡检结果
                 log.info("Data-Sync-Server for Chi-Zhou City is running normally...");
-                client.send(token, new TextMessage("Data-Sync-Server for Chi-Zhou City is running normally..."));
             }
         } else {
             client.send(token, new TextMessage("query oracle database fail, no response!"));

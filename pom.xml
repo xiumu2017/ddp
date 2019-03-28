@@ -11,7 +11,7 @@
     <groupId>com.paradise</groupId>
     <artifactId>ddp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>ddp</name>
     <description>DingdingPush Application</description>
 
@@ -28,6 +28,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,16 +66,13 @@
     </dependencies>
 
     <build>
+        <finalName>transit-monitor</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.paradise.ddp.DdpApplication</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

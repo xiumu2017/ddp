@@ -26,7 +26,6 @@ import static com.paradise.ddp.utils.BingImageUtils.getRandom;
 @Slf4j
 @Component
 public class ScheduleTask {
-    private static final Logger logger = LoggerFactory.getLogger(ScheduleTask.class);
 
     @Value("${bingImgToken}")
     private String token;
@@ -35,17 +34,18 @@ public class ScheduleTask {
     public void scheduled() {
         Calendar calendar = Calendar.getInstance();
         int h = calendar.get(Calendar.HOUR_OF_DAY);
-        if (h > 12 || h < 9) {
-            logger.info(">>> 休息时间~");
-            return;
-        }
         DentalCabotClient client = new DentalCabotClient();
         try {
             PoemEntity poemEntity = PoemSendUtils.getPoem();
             client.send(token, Poem2Md.poem2Md(poemEntity));
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
+    }
+
+    @Scheduled(cron = "0 */1 * * * ?")
+    public void print(){
+        log.info("server is running ...");
     }
 
 
@@ -58,9 +58,9 @@ public class ScheduleTask {
             BingResult bingResult = BingImageUtils.getBingImage(getRandom(10), "1");
             client.send(token, bingResult2Msg(bingResult.getImages().get(0)));
         } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return;
         }
-        logger.info("<<< Bing push success!");
+        log.info("<<< Bing push success!");
     }
 }
