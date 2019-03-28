@@ -80,6 +80,7 @@ public class ActionCardMessage implements Message {
         actions.add(action);
     }
 
+    @Override
     public String toJsonString() {
 
         Map<String, Object> items = new HashMap<String, Object>();

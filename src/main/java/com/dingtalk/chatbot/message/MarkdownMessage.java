@@ -86,6 +86,7 @@ public class MarkdownMessage implements Message {
         return sb.toString();
     }
 
+    @Override
     public String toJsonString() {
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("msgtype", "markdown");

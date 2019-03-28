@@ -78,6 +78,7 @@ public class SingleTargetActionCardMessage implements Message {
     }
 
 
+    @Override
     public String toJsonString() {
         Map<String, Object> items = new HashMap<String, Object>();
         items.put("msgtype", "actionCard");

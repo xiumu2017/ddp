@@ -2,8 +2,6 @@
 package com.paradise.ddp.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.dingtalk.chatbot.DentalCabotClient;
-import com.dingtalk.chatbot.demo.TestConfig;
 import com.dingtalk.chatbot.message.MarkdownMessage;
 import com.dingtalk.chatbot.message.Message;
 import com.paradise.ddp.constant.CommonUrl;
@@ -66,17 +64,6 @@ public class BingImageUtils {
         message.add(MarkdownMessage.getImageText(CommonUrl.BING_URL + image.getUrl()));
         message.add(MarkdownMessage.getLinkText(image.getCopyright(), CommonUrl.BING_URL + image.getCopyrightlink()));
         return message;
-    }
-
-    public static void main(String[] args) {
-        DentalCabotClient client = new DentalCabotClient();
-        try {
-            BingResult bingResult = getBingImage("0", "1");
-            client.send(TestConfig.PARADISE, bingResult2Msg(bingResult.getImages().get(0)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.print(getRandom(7));
     }
 
     public static String getRandom(int i) {
