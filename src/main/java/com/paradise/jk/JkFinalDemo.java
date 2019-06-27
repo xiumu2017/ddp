@@ -23,5 +23,6 @@ public final class JkFinalDemo {
         String s = "zzz".intern();
         Integer integer = new Integer(1);
         Object o;
+        List<IncompatibleClassChangeError> list = new ArrayList<>(20);
     }
 }

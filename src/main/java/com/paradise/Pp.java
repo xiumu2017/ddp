@@ -1,5 +1,8 @@
 package com.paradise;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+
 /**
  * @author Paradise
  */
@@ -13,5 +16,8 @@ public class Pp {
 
         System.out.println(n);
         System.out.println(z);
+
+        LinkedList linkedList;
+        HashSet hashSet;
     }
 }
