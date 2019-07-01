@@ -12,7 +12,5 @@ public class TypeConversion {
         short a = 128;
         byte b = (byte) a;
         System.out.println(b);
-        String hash;
-        Object o;
     }
 }
