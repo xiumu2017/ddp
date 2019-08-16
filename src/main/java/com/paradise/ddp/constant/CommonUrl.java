@@ -1,6 +1,9 @@
 
 package com.paradise.ddp.constant;
 
+/**
+ * @author Paradise
+ */
 public class CommonUrl {
     public static String BING_URL = "https://cn.bing.com/";
 

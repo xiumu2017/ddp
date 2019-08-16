@@ -44,23 +44,39 @@ public class ScheduleTask {
     }
 
     @Scheduled(cron = "0 */1 * * * ?")
-    public void print(){
+    public void print() {
         log.info("server is running ...");
     }
 
-
-    @Scheduled(fixedRate = 600000)
+    /**
+     * 每天9点 推送壁纸 到钉钉群
+     */
+    @Scheduled(cron = "0 0 9 * * ?")
     public void scheduled1() {
         Calendar calendar = Calendar.getInstance();
         int h = calendar.get(Calendar.HOUR_OF_DAY);
         DentalCabotClient client = new DentalCabotClient();
         try {
-            BingResult bingResult = BingImageUtils.getBingImage(getRandom(10), "1");
-            client.send(token, bingResult2Msg(bingResult.getImages().get(0)));
+            BingResult bingResult = BingImageUtils.getBingImage("0", "1");
+            client.send("ae6476d73f64ddd5e96daf17d9acbedf7c0ea24e8eef1e4e7d468b564618d58c",
+                    bingResult2Msg(bingResult.getImages().get(0)));
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             return;
         }
         log.info("<<< Bing push success!");
+    }
+
+    public static void main(String[] args) {
+        DentalCabotClient client = new DentalCabotClient();
+        try {
+            String token = "ae6476d73f64ddd5e96daf17d9acbedf7c0ea24e8eef1e4e7d468b564618d58c";
+            PoemEntity poemEntity = PoemSendUtils.getPoem();
+            client.send(token, Poem2Md.poem2Md(poemEntity));
+            BingResult bingResult = BingImageUtils.getBingImage(String.valueOf(0), "1");
+            client.send(token, bingResult2Msg(bingResult.getImages().get(0)));
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        }
     }
 }

@@ -4,6 +4,9 @@ package com.paradise.ddp.entity;
 
 import java.util.List;
 
+/**
+ * @author Paradise
+ */
 public class BingResult {
     private List<BingImage> images;
     private String tooltips;

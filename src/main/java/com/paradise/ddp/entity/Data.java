@@ -3,6 +3,9 @@ package com.paradise.ddp.entity;
 
 import java.util.Arrays;
 
+/**
+ * @author Paradise
+ */
 public class Data {
     private String id;
     private String content;
