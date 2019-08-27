@@ -58,8 +58,7 @@ public class ScheduleTask {
         DentalCabotClient client = new DentalCabotClient();
         try {
             BingResult bingResult = BingImageUtils.getBingImage("0", "1");
-            client.send("ae6476d73f64ddd5e96daf17d9acbedf7c0ea24e8eef1e4e7d468b564618d58c",
-                    bingResult2Msg(bingResult.getImages().get(0)));
+            client.send(token, bingResult2Msg(bingResult.getImages().get(0)));
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             return;
