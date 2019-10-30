@@ -2,6 +2,7 @@ package com.paradise.ddp;
 
 import com.dingtalk.chatbot.DentalCabotClient;
 import com.paradise.ddp.entity.BingResult;
+import com.paradise.ddp.entity.Data;
 import com.paradise.ddp.entity.PoemEntity;
 import com.paradise.ddp.utils.BingImageUtils;
 import com.paradise.ddp.utils.Poem2Md;
@@ -40,5 +41,12 @@ public class HelloController {
             return "Push fail: " + e.getLocalizedMessage();
         }
         return "Push success!";
+    }
+
+    @RequestMapping("/test")
+    public String test(String id, Data data) {
+        log.info(id);
+        log.info(data.toString());
+        return data.toString();
     }
 }

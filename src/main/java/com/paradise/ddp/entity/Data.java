@@ -73,6 +73,7 @@ public class Data {
 
     @Override
     public String toString() {
+        origin = origin == null ? new Origin() : origin;
         return "Data{" +
                 "id='" + id + '\'' +
                 ", content='" + content + '\'' +
