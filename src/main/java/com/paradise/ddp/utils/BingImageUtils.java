@@ -53,7 +53,6 @@ public class BingImageUtils {
     }
 
     public static Message bingResult2Msg(BingImage image) {
-        System.out.println(image.toString());
         MarkdownMessage message = new MarkdownMessage();
         if (StringUtils.isNotEmpty(image.getCopyright())) {
             message.setTitle(image.getCopyright());

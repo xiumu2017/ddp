@@ -8,6 +8,8 @@ import com.paradise.ddp.utils.BingImageUtils;
 import com.paradise.ddp.utils.Poem2Md;
 import com.paradise.ddp.utils.PoemSendUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,20 +24,26 @@ import static com.paradise.ddp.utils.BingImageUtils.bingResult2Msg;
 @Slf4j
 public class HelloController {
 
+    @Value("${bingImgToken}")
+    public String token;
+    @Value("${secret}")
+    public String secret;
+
     @RequestMapping("/index")
     public String index() {
         return "Hello,Server is running...";
     }
 
     @RequestMapping("/push")
-    public String push() {
+    public String push(String param, Integer index) {
         DentalCabotClient client = new DentalCabotClient();
-        String token = "ae6476d73f64ddd5e96daf17d9acbedf7c0ea24e8eef1e4e7d468b564618d58c";
         try {
             PoemEntity poemEntity = PoemSendUtils.getPoem();
-            BingResult bingResult = BingImageUtils.getBingImage(String.valueOf(0), "1");
-            client.send(token, Poem2Md.poem2Md(poemEntity));
-            client.send(token, bingResult2Msg(bingResult.getImages().get(0)));
+            BingResult bingResult = BingImageUtils.getBingImage(String.valueOf(index), "1");
+            if (StringUtils.isNotBlank(param)) {
+                client.send(token, Poem2Md.poem2Md(poemEntity), secret);
+            }
+            client.send(token, bingResult2Msg(bingResult.getImages().get(0)), secret);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             return "Push fail: " + e.getLocalizedMessage();
