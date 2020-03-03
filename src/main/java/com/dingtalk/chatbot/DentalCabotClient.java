@@ -31,7 +31,7 @@ public class DentalCabotClient {
 
     private HttpClient httpclient = HttpClients.createDefault();
 
-    private static String webHookPrefix = "https://oapi.dingtalk.com/robot/send?access_token=";
+    private static final String WEB_HOOK_PREFIX = "https://oapi.dingtalk.com/robot/send?access_token=";
 
     private String createSign(String secret) {
         long timestamp = System.currentTimeMillis();
@@ -50,7 +50,7 @@ public class DentalCabotClient {
     }
 
     private String createUrl(String secret, String token) {
-        return webHookPrefix + token + "&timestamp=" + System.currentTimeMillis() + "&sign=" + createSign(secret);
+        return WEB_HOOK_PREFIX + token + "&timestamp=" + System.currentTimeMillis() + "&sign=" + createSign(secret);
     }
 
     private SendResult push(Message message, String url) {

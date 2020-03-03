@@ -1,6 +1,9 @@
 
 package com.paradise.ddp.entity;
 
+/**
+ * @author Paradise
+ */
 public class BingImage {
 
     private String url;
