@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <springProperty name="LOGS" source="logging.path" defaultValue="./logs"/>
+    <springProperty name="LOGS" source="logging.path" defaultValue="/logs/"/>
 
     <!--    <springProfile name="prod">-->
     <!--        <property name="LOGS" value="/mnt/logs"/>-->

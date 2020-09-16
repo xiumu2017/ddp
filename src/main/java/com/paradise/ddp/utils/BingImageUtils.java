@@ -7,6 +7,7 @@ import com.dingtalk.chatbot.message.Message;
 import com.paradise.ddp.constant.CommonUrl;
 import com.paradise.ddp.entity.BingImage;
 import com.paradise.ddp.entity.BingResult;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,17 +15,17 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Random;
 
 /**
+ * bing 壁纸工具类
+ *
  * @author dzhang
  */
+@Slf4j
 public class BingImageUtils {
-    private static final Logger logger = LoggerFactory.getLogger(BingImageUtils.class);
 
     public static BingResult getBingImage(String index, String number) throws IOException {
         BingResult bingResult = new BingResult();
@@ -47,11 +48,17 @@ public class BingImageUtils {
             String result = EntityUtils.toString(httpResponse.getEntity());
             JSONObject obj = JSONObject.parseObject(result);
             bingResult = obj.toJavaObject(BingResult.class);
-            System.out.println(bingResult.getImages().get(0).getUrl());
+            log.info("获取到的壁纸路径：{}", bingResult.getImages().get(0).getUrl());
         }
         return bingResult;
     }
 
+    /**
+     * bing 壁纸转 钉钉消息
+     *
+     * @param image bing 壁纸
+     * @return 钉钉消息
+     */
     public static Message bingResult2Msg(BingImage image) {
         MarkdownMessage message = new MarkdownMessage();
         if (StringUtils.isNotEmpty(image.getCopyright())) {
@@ -67,7 +74,7 @@ public class BingImageUtils {
 
     public static String getRandom(int i) {
         int ran = new Random().nextInt(i);
-        logger.info("当前随机数字为：" + ran);
+        log.info("当前随机数字为：" + ran);
         return String.valueOf(ran);
     }
 }
