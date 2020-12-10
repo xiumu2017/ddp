@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by dustin on 2017/3/18.
+ *
+ * @author dustin
+ * @date 2017/3/18
  */
 public class MarkdownMessage implements Message {
 
@@ -78,14 +80,15 @@ public class MarkdownMessage implements Message {
             return "";
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < unorderItem.size() - 1; i++) {
-            sb.append("- " + unorderItem.get(i) + "\n");
+            sb.append("- ").append(unorderItem.get(i)).append("\n");
         }
-        sb.append("- " + unorderItem.get(unorderItem.size() - 1));
+        sb.append("- ").append(unorderItem.get(unorderItem.size() - 1));
         return sb.toString();
     }
 
+    @Override
     public String toJsonString() {
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("msgtype", "markdown");
@@ -93,9 +96,9 @@ public class MarkdownMessage implements Message {
         Map<String, Object> markdown = new HashMap<String, Object>();
         markdown.put("title", title);
 
-        StringBuffer markdownText = new StringBuffer();
+        StringBuilder markdownText = new StringBuilder();
         for (String item : items) {
-            markdownText.append(item + "\n");
+            markdownText.append(item).append("\n");
         }
         markdown.put("text", markdownText.toString());
         result.put("markdown", markdown);

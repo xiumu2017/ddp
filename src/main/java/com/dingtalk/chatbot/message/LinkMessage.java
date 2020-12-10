@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by dustin on 2017/3/18.
+ *
+ * @author dustin
+ * @date 2017/3/18
  */
 public class LinkMessage implements Message {
 
@@ -49,6 +51,7 @@ public class LinkMessage implements Message {
     }
 
 
+    @Override
     public String toJsonString() {
         Map<String, Object> items = new HashMap<String, Object>();
         items.put("msgtype", "link");

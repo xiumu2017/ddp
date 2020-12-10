@@ -1,7 +1,8 @@
-
-
 package com.paradise.ddp.entity;
 
+/**
+ * @author dzhang
+ */
 public class PoemEntity {
     private String status;
     private String token;

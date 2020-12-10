@@ -3,6 +3,9 @@ package com.paradise.ddp.entity;
 
 import java.util.Arrays;
 
+/**
+ * @author Paradise
+ */
 public class Data {
     private String id;
     private String content;
@@ -70,6 +73,7 @@ public class Data {
 
     @Override
     public String toString() {
+        origin = origin == null ? new Origin() : origin;
         return "Data{" +
                 "id='" + id + '\'' +
                 ", content='" + content + '\'' +

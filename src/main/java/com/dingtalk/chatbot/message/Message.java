@@ -1,7 +1,9 @@
 package com.dingtalk.chatbot.message;
 
 /**
- * Created by dustin on 2017/3/17.
+ *
+ * @author dustin
+ * @date 2017/3/17
  */
 public interface Message {
 

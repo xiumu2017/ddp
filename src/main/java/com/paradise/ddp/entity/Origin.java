@@ -3,6 +3,11 @@ package com.paradise.ddp.entity;
 
 import java.util.Arrays;
 
+/**
+ * 古诗词 接口返回
+ *
+ * @author Paradise
+ */
 public class Origin {
     private String title;
     private String dynasty;
@@ -38,12 +43,28 @@ public class Origin {
         return content;
     }
 
+    public String getContentStr() {
+        StringBuilder builder = new StringBuilder();
+        if (content != null) {
+            for (String str : content) {
+                builder.append(str);
+            }
+        }
+        return builder.toString();
+    }
+
     public void setContent(String[] content) {
         this.content = content;
     }
 
     public String getTranslate() {
-        return translate;
+        if (translate != null) {
+            return translate
+                    .replaceAll("\",\"", "")
+                    .replaceAll("\\[", "")
+                    .replaceAll("]", "");
+        }
+        return null;
     }
 
     public void setTranslate(String translate) {

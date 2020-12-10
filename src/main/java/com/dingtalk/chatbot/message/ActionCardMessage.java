@@ -10,14 +10,15 @@ import java.util.Map;
 
 
 /**
- * Created by dustin on 2017/3/17.
+ * @author dustin
+ * @date 2017/3/17
  */
 public class ActionCardMessage implements Message {
     public static final int MAX_ACTION_BUTTON_CNT = 5;
     public static final int MIN_ACTION_BUTTON_CNT = 1;
 
     private String title;
-    private String bannerURL;
+    private String bannerUrl;
     private String briefTitle;
     private String briefText;
     private boolean hideAvatar;
@@ -48,12 +49,12 @@ public class ActionCardMessage implements Message {
         this.actionButtonStyle = actionButtonStyle;
     }
 
-    public String getBannerURL() {
-        return bannerURL;
+    public String getBannerUrl() {
+        return bannerUrl;
     }
 
-    public void setBannerURL(String bannerURL) {
-        this.bannerURL = bannerURL;
+    public void setBannerUrl(String bannerUrl) {
+        this.bannerUrl = bannerUrl;
     }
 
     public String getTitle() {
@@ -80,6 +81,7 @@ public class ActionCardMessage implements Message {
         actions.add(action);
     }
 
+    @Override
     public String toJsonString() {
 
         Map<String, Object> items = new HashMap<String, Object>();
@@ -89,8 +91,8 @@ public class ActionCardMessage implements Message {
         actionCardContent.put("title", title);
 
         StringBuilder text = new StringBuilder();
-        if (StringUtils.isNotBlank(bannerURL)) {
-            text.append(MarkdownMessage.getImageText(bannerURL)).append("\n");
+        if (StringUtils.isNotBlank(bannerUrl)) {
+            text.append(MarkdownMessage.getImageText(bannerUrl)).append("\n");
         }
         if (StringUtils.isNotBlank(briefTitle)) {
             text.append(MarkdownMessage.getHeaderText(3, briefTitle)).append("\n");
