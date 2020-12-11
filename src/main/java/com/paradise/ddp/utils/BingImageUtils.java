@@ -1,9 +1,9 @@
 
 package com.paradise.ddp.utils;
 
+import chatbot.message.MarkdownMessage;
+import chatbot.message.Message;
 import com.alibaba.fastjson.JSONObject;
-import com.dingtalk.chatbot.message.MarkdownMessage;
-import com.dingtalk.chatbot.message.Message;
 import com.paradise.ddp.constant.CommonUrl;
 import com.paradise.ddp.entity.BingImage;
 import com.paradise.ddp.entity.BingResult;
@@ -14,17 +14,13 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * @author dzhang
  */
 public class BingImageUtils {
-    private static final Logger logger = LoggerFactory.getLogger(BingImageUtils.class);
 
     public static BingResult getBingImage(String index, String number) throws IOException {
         BingResult bingResult = new BingResult();
@@ -65,9 +61,4 @@ public class BingImageUtils {
         return message;
     }
 
-    public static String getRandom(int i) {
-        int ran = new Random().nextInt(i);
-        logger.info("当前随机数字为：" + ran);
-        return String.valueOf(ran);
-    }
 }
