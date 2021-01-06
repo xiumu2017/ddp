@@ -59,6 +59,8 @@
             <groupId>paradise</groupId>
             <artifactId>dpd</artifactId>
             <version>0.0.1</version>
+            <scope>system</scope>
+            <systemPath>D:\ParadiseProject\archive\jar\dpd-0.0.1-jar-with-dependencies.jar</systemPath>
         </dependency>
     </dependencies>
 
