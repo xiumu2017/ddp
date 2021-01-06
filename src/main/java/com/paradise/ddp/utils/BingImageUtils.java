@@ -1,13 +1,12 @@
 
 package com.paradise.ddp.utils;
 
+import chatbot.message.MarkdownMessage;
+import chatbot.message.Message;
 import com.alibaba.fastjson.JSONObject;
-import com.dingtalk.chatbot.message.MarkdownMessage;
-import com.dingtalk.chatbot.message.Message;
 import com.paradise.ddp.constant.CommonUrl;
 import com.paradise.ddp.entity.BingImage;
 import com.paradise.ddp.entity.BingResult;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -17,14 +16,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.Random;
 
 /**
- * bing 壁纸工具类
- *
  * @author dzhang
  */
-@Slf4j
 public class BingImageUtils {
 
     public static BingResult getBingImage(String index, String number) throws IOException {
@@ -48,17 +43,11 @@ public class BingImageUtils {
             String result = EntityUtils.toString(httpResponse.getEntity());
             JSONObject obj = JSONObject.parseObject(result);
             bingResult = obj.toJavaObject(BingResult.class);
-            log.info("获取到的壁纸路径：{}", bingResult.getImages().get(0).getUrl());
+            System.out.println(bingResult.getImages().get(0).getUrl());
         }
         return bingResult;
     }
 
-    /**
-     * bing 壁纸转 钉钉消息
-     *
-     * @param image bing 壁纸
-     * @return 钉钉消息
-     */
     public static Message bingResult2Msg(BingImage image) {
         MarkdownMessage message = new MarkdownMessage();
         if (StringUtils.isNotEmpty(image.getCopyright())) {
@@ -72,9 +61,4 @@ public class BingImageUtils {
         return message;
     }
 
-    public static String getRandom(int i) {
-        int ran = new Random().nextInt(i);
-        log.info("当前随机数字为：" + ran);
-        return String.valueOf(ran);
-    }
 }

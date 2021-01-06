@@ -1,7 +1,7 @@
 package com.paradise.ddp.utils;
 
-import com.dingtalk.chatbot.message.MarkdownMessage;
-import com.dingtalk.chatbot.message.Message;
+import chatbot.message.MarkdownMessage;
+import chatbot.message.Message;
 import com.paradise.ddp.entity.Origin;
 import com.paradise.ddp.entity.PoemEntity;
 import org.apache.commons.lang3.StringUtils;
@@ -24,9 +24,7 @@ public class Poem2Md {
         message.add(MarkdownMessage.getHeaderText(3, origin.getAuthor() + " " + origin.getDynasty()));
         message.add(MarkdownMessage.getBoldText(origin.getContentStr()));
         if (StringUtils.isNotEmpty(origin.getTranslate())) {
-            message.add("> " + origin.getTranslate());
-        } else {
-            message.add("> 暂无翻译~");
+            message.add(MarkdownMessage.getReferenceText(origin.getTranslate()));
         }
         message.add("  ");
         return message;

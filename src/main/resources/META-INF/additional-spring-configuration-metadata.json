@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "bingImgToken",
+      "type": "java.lang.String",
+      "description": "Description for bingImgToken."
+    },
+    {
+      "name": "secret",
+      "type": "java.lang.String",
+      "description": "Description for secret."
+    }
+  ] }
